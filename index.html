@@ -2,38 +2,128 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>Random Blocks</title>
+  <title>Random Advert Blocks</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
       padding: 20px;
+      background: #f5f5f5;
     }
-    .content-block {
-      border: 1px solid #ccc;
-      padding: 15px;
-      border-radius: 5px;
-      margin-bottom: 15px;
+
+    #ads-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .ad-block {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .ad-inner {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .ad-image img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .ad-text h2 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      colour: #2c3e50;
+    }
+
+    .ad-text p {
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Mobile: stack image above text */
+    @media (max-width: 768px) {
+      .ad-inner {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="container">
-    <div class="content-block">Block 1: Example text.</div>
-    <div class="content-block">Block 2: Example text.</div>
-    <div class="content-block">Block 3: Example text.</div>
+  <div id="ads-container">
+
+    <!-- ADVERT 1 -->
+    <section class="ad-block">
+      <div class="ad-inner">
+        <div class="ad-image">
+          <img src="IMAGE1.jpg" alt="Client 1 advert" />
+        </div>
+        <div class="ad-text">
+          <h2>Client 1 – Why Us?</h2>
+          <p>
+            Short description for client 1. Explain what they offer, why it is
+            different, and add a simple call to action such as “Order today” or
+            “Contact us for more information”.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADVERT 2 -->
+    <section class="ad-block">
+      <div class="ad-inner">
+        <div class="ad-image">
+          <img src="IMAGE2.jpg" alt="Client 2 advert" />
+        </div>
+        <div class="ad-text">
+          <h2>Client 2 – Your Heading Here</h2>
+          <p>
+            Text for client 2. You can copy the style of your Foodsock example:
+            who they are, what problem they solve, and why visitors should try
+            them.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADVERT 3 -->
+    <section class="ad-block">
+      <div class="ad-inner">
+        <div class="ad-image">
+          <img src="IMAGE3.jpg" alt="Client 3 advert" />
+        </div>
+        <div class="ad-text">
+          <h2>Client 3 – Headline</h2>
+          <p>
+            Text for client 3. Mention key benefits, pricing or location if
+            helpful, and a clear next step.
+          </p>
+        </div>
+      </div>
+    </section>
+
   </div>
 
   <script>
-    const container = document.getElementById("container");
-    const blocks = Array.from(container.children);
+    // Randomise order of advert blocks
+    (function () {
+      const container = document.getElementById("ads-container");
+      const ads = Array.from(container.children);
 
-    for (let i = blocks.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [blocks[i], blocks[j]] = [blocks[j], blocks[i]];
-    }
+      for (let i = ads.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [ads[i], ads[j]] = [ads[j], ads[i]];
+      }
 
-    blocks.forEach(b => container.appendChild(b));
+      ads.forEach(ad => container.appendChild(ad));
+    })();
   </script>
 </body>
 </html>
-
