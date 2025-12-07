@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Random Blocks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .content-block {
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="content-block">Block 1: Example text.</div>
+    <div class="content-block">Block 2: Example text.</div>
+    <div class="content-block">Block 3: Example text.</div>
+  </div>
+
+  <script>
+    const container = document.getElementById("container");
+    const blocks = Array.from(container.children);
+
+    for (let i = blocks.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [blocks[i], blocks[j]] = [blocks[j], blocks[i]];
+    }
+
+    blocks.forEach(b => container.appendChild(b));
+  </script>
+</body>
+</html>
+
